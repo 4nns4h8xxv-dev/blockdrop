@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f1115">
+  <title>BlockDrop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="game-header">
+      <div>
+        <p class="kicker">Falling Blocks</p>
+        <h1>BlockDrop</h1>
+      </div>
+      <p id="statusText" class="status-pill">Bereit</p>
+    </header>
+
+    <section class="game-layout" aria-label="BlockDrop Spielbereich">
+      <div class="game-area">
+        <div class="board-shell">
+          <div id="board" class="board" role="grid" aria-label="Spielfeld mit 10 Spalten und 20 Zeilen"></div>
+
+          <div id="stateOverlay" class="state-overlay">
+            <div class="state-content">
+              <h2 id="stateTitle">BlockDrop</h2>
+              <p id="stateMessage">Waehle deinen Spielmodus.</p>
+              <p id="finalScore" class="final-score" hidden></p>
+              <div id="modeSelect" class="mode-select" aria-label="Modus-Auswahl">
+                <button class="mode-card" type="button" data-mode="normal">
+                  <strong>Normalmodus</strong>
+                  <span>Endlos spielen, Linien loeschen und den Highscore jagen.</span>
+                </button>
+                <button class="mode-card" type="button" data-mode="challenge">
+                  <strong>Challenge-Modus</strong>
+                  <span>Mehrere Aufgaben mit Zielen, Tempo und Start-Hindernissen loesen.</span>
+                </button>
+              </div>
+              <div id="overlayActions" class="overlay-actions">
+                <button id="overlayAction" class="button primary" type="button">Start</button>
+                <button id="overlaySecondary" class="button" type="button" hidden>Zur Modus-Auswahl</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="touch-controls" aria-label="Mobile Steuerung">
+          <button class="touch-button" type="button" data-action="left">Links</button>
+          <button class="touch-button" type="button" data-action="right">Rechts</button>
+          <button class="touch-button" type="button" data-action="rotate">Rotieren</button>
+          <button class="touch-button" type="button" data-action="down">Runter</button>
+          <button class="touch-button strong" type="button" data-action="drop">Drop</button>
+        </div>
+      </div>
+
+      <aside class="info-panel" aria-label="Spielinformationen">
+        <section class="mode-panel" aria-label="Aktueller Modus und Ziel">
+          <div class="mode-line">
+            <span id="modeLabel">Modus waehlen</span>
+            <strong id="challengeName">Bereit</strong>
+          </div>
+          <p id="goalText">Normalmodus oder Challenge-Modus starten.</p>
+          <p id="progressText">Fortschritt: -</p>
+          <div id="goalMeter" class="goal-meter" aria-hidden="true">
+            <span id="goalBar"></span>
+          </div>
+          <p id="totalText" class="total-text">Gesamt: 0</p>
+        </section>
+
+        <div class="stats-grid">
+          <div class="stat">
+            <span id="scoreLabel">Punkte</span>
+            <strong id="score">0</strong>
+          </div>
+          <div class="stat">
+            <span id="highScoreLabel">Highscore</span>
+            <strong id="highScore">0</strong>
+          </div>
+          <div class="stat">
+            <span id="levelLabel">Level</span>
+            <strong id="level">1</strong>
+          </div>
+          <div class="stat">
+            <span id="linesLabel">Linien</span>
+            <strong id="lines">0</strong>
+          </div>
+        </div>
+
+        <section class="next-panel" aria-label="Naechster Block">
+          <h2>Naechster Block</h2>
+          <div id="nextBoard" class="next-board" aria-hidden="true"></div>
+        </section>
+
+        <div class="button-row">
+          <button id="primaryControl" class="button primary" type="button">Start</button>
+          <button id="restartControl" class="button" type="button">Neustart</button>
+        </div>
+
+        <section class="controls-panel" aria-label="Steuerung">
+          <h2>Steuerung</h2>
+          <ul>
+            <li><span>Links/Rechts</span><strong>Pfeiltasten</strong></li>
+            <li><span>Runter</span><strong>Pfeil unten</strong></li>
+            <li><span>Rotieren</span><strong>Pfeil oben / Leertaste</strong></li>
+            <li><span>Pause</span><strong>P</strong></li>
+            <li><span>Neustart</span><strong>R</strong></li>
+          </ul>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
